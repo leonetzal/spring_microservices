@@ -35,7 +35,6 @@ public class ItemServiceFeign implements IItemService {
 
 	@Override
 	public Product update(Product product, Long id) {
-		// TODO Auto-generated method stub
 		return clientFeign.update(product, id);
 	}
 

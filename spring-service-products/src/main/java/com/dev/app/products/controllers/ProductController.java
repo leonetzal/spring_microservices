@@ -20,10 +20,7 @@ import com.dev.app.products.models.service.IProductService;
 
 @RestController
 public class ProductController {
-	
-//	@Autowired
-//	private Environment env;
-	
+
 	@Value("${server.port}")
 	private Integer port;
 
@@ -33,7 +30,6 @@ public class ProductController {
 	@GetMapping("/list")
 	public List<Product> list() {
 		return productService.findAll().stream().map(product -> {
-			//product.setPort(Integer.parseInt(env.getProperty("server.port")));
 			product.setPort(port);
 			return product;
 		}).collect(Collectors.toList());
@@ -42,15 +38,7 @@ public class ProductController {
 	@GetMapping("/view/{id}")
 	public Product detail(@PathVariable Long id) {
 		Product product = productService.findById(id);
-		//product.setPort(Integer.parseInt(env.getProperty("server.port")));
 		product.setPort(port);
-		
-//		try {
-//			Thread.sleep(2000L);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		
 		return product;
 	}
 	
